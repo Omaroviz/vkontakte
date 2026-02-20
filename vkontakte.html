@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="vkontaktestyle.css">
+	<link rel="icon" href="vkontakte.ico">
+	<title>Вконтакте Druza</title>
+</head>
+
+<!--<a href="#" class="vk-button"></a>-->
+
+<body>
+<header style="">
+	<div class="vkontakte-main-text">
+		<span class="vkontakte-text"><span class="vkontakte-main-text-B">В</span>контакте</span>
+		<a href="#" class="vk-button">Моя страница</a>
+		<a href="#" class="vk-button">Друзья</a>
+	</div>
+
+</header>
+<main>
+	<nav>
+		<h2 style="margin: 10px;"><em>....Стена Omaroivz</em></h2>
+		<a href="#vniz" class="vk-button">Вниз</a>
+		<a href="profile.html" class="vk-button">Моя страница</a>
+	</nav>
+	<div class="post">
+		<p class="postmain">Новая запись</p>
+		<textarea id="postName" placeholder="Заголовок" class="createPostName"></textarea>
+		<textarea id="postInput" placeholder="Что у вас нового?" class="createPostText"></textarea>
+		<input type="password" id="postPassword" placeholder="Пароль" class="createPostPassword">
+
+		<button type="button" onclick="addPost()" class="createPostButton">Опубликовать</button>
+	</div>
+
+	<!-- Сюда будут падать новые посты -->
+	<div id="wall"></div>
+
+	<div class="post">
+		<p class="postmain">Дата выхода.</p>
+		Пока эта информация ни кому не нужна (проект локальный на 18.02.2026, ссылка на код есть только в GitHub), кроме разработчиков. Так как проект локальный, посты создаются только по классу post вручную. Открытие сайта будет воспроизведено только после того, как на сайте будет:
+		<ol>
+			<li>Добавление постов на сервер без кода</li>
+			<li>Система пользователей</li>
+			<li>Публичные каналы (паблики)</li>
+			<li>Профиль: стена, лич. информация, друзья и тп</li>
+		</ol>
+		Только после этих пунктов сервис "Вконтакте Druza" будет официально открыт
+	</div>
+	<div class="post">
+		<img src="IMG_0507.jpeg" alt="" width="50px" /> <img src="IMG_0508.jpeg" alt="" width="50px"/><p style="font-size: 25px; margin: 10px;">Обновление дизайна</p>
+		<p>Новые логотипы и кнопки. За логотип и подбор цвета спасибо <a href="google">Gemini.</a></p>
+	</div>
+	<div class="post">
+		<p class="postmain">Создатели Майами сделали Lorem Ipsum!</p>
+		<p>Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст.." Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам "lorem ipsum" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).</p>
+	</div>
+	<div class="post">
+		<p class="postmain">Альфа-версия Вконтакте Druza открыта!</p>
+		<p>Сегодня, 19 ферваля 2026 года, в 18:41 добавлен первый репозиторий Вконтакте Druza.</p>
+		<div class="postfooter">
+			<button type="submit" onclick="like()">Лайк</button>
+			<button type="submit">Дизлайк</button>
+			<a href="mailto:omaroviz2025@gmail.com"><button type="submit">E-Mail</button></a>
+		</div>
+	</div>
+</main>
+<footer id="vniz">
+	<a href="#" class="vk-button">О сайте</a>
+	"Вконтакте Druza" ООО. Все права защищены. Распространения кода сайта разрешено с <a href="#">условиями конфидициальности</a> на сайте GitHub.
+</footer>
+<script>
+	function addPost() {
+		const text = document.getElementById('postInput').value;
+		const postname = document.getElementById('postName').value;
+		const postpass = document.getElementById('postPassword').value;
+		const wall = document.getElementById('wall');
+
+		if (postpass == "Helio" && text.trim() !== "") {
+			// Создаем оболочку поста
+			const newPost = document.createElement('div');
+			newPost.className = 'post';
+
+			// Формируем внутренности (как у тебя в CSS)
+			newPost.innerHTML = `
+        <p class="postmain">${postname}</p>
+        <p>${text}</p>
+        <div class="postfooter">
+            <button type="button" onclick="like()">Лайк</button>
+            <button type="button">Дизлайк</button>
+        </div>
+    `;
+
+			// Добавляем в начало списка (новые сверху)
+			wall.prepend(newPost);
+
+			// Очищаем поле
+			document.getElementById('postInput').value = "";
+			document.getElementById('postName').value = "";
+			document.getElementById('postPassword').value = "";
+		}
+	}
+</script>
+
+</body>
+
+</html>
