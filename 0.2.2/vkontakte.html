@@ -9,21 +9,14 @@
 	<title>Вконтакте Druza</title>
 </head>
 
+<!--<a href="#" class="vk-button"></a>-->
+
 <body>
 <header style="">
-	<div class="vkontakte-main-panel">
-  <span class="vkontakte-text">
-    <span class="vkontakte-main-text-B">В</span>контакте
-  </span>
-
+	<div class="vkontakte-main-text">
+		<span class="vkontakte-text"><span class="vkontakte-main-text-B">В</span>контакте</span>
 		<a href="profile.html" class="vk-button">Моя страница</a>
 		<a href="#" class="vk-button">Друзья</a>
-
-		<div class="vk-right">
-			<a href="vkontakte.html" class="vk-button">Новости</a>
-			<a href="#" class="vk-button">Поиск</a>
-			<a href="#" class="vk-button">Вход</a>
-		</div>
 	</div>
 
 </header>
@@ -31,7 +24,7 @@
 	<nav>
 		<h2 style="margin: 10px;"><em>....Стена Новостей</em></h2>
 		<a href="#vniz" class="vk-button">Вниз</a>
-		<a href="#" class="vk-button" id="subscribeButton" onclick="subscribe()">Подписаться</a>
+		<a href="#" class="vk-button">Подписаться</a>
 	</nav>
 	<div class="post">
 		<p class="postmain">Новая запись</p>
@@ -46,31 +39,10 @@
 	<div id="wall"></div>
 
 	<div class="post">
-		<p class="postmain">Об версии 0.2.5</p>
-		<p>Связи с изменением "шапки" страницы, мобильная версия сайта начала лагать. Для устранения проблемы требуется
-			время, но
-			новые функции будут появляться в версии 0.2.4, 0.2.4.x и т.д. </p>
-	</div>
-	<div class="post">
-		<p class="postmain">Версия 0.2.3</p>
-		<p>Обновление дизайна:</p>
-		<ul>
-			<li>Новая верхняя строка в стиле Вконтакте 2006.</li>
-			<li>Кнопка "Подписаться" работает.</li>
-			<li>Добавлена родительская <a href="https://vkontakte.ucoz.site/">страница</a> всех версий сайта</li>
-			<li>Исправлены текстовые поля.</li>
-			<li>Добавлены посты в профиле</li>
-			<li>Добавлены кнопки "Новости", "Поиск" и "Вход" в шапке</li>
-			<li>Обводка аватара профиля.</li>
-		</ul>
-	</div>
-	<div class="post">
 		<p class="postmain">Версия 0.2.2</p>
 		<p>Крупное обновление дизайна и функционала:</p>
 		<ul>
-			<li>Новая верхняя строка, добавлены кнопки "Моя страница" и "Друзья". Логотип и кнопки распологаются
-				слево-направо.
-			</li>
+			<li>Новая верхняя строка, добавлены кнопки "Моя страница" и "Друзья". Логотип и кнопки распологаются слево-направо.</li>
 			<li>Компактный размер постов.</li>
 			<li>Добавлена функция "Написать пост" (бета-доступ), подтверждение паролем.
 			<li>Новый дизайн кнопок. Переход из тегов &lt;button&gt; в &lt;a&gt;.</li>
@@ -120,7 +92,38 @@
 	"Вконтакте Druza" ООО. Все права защищены. Распространения кода сайта разрешено с <a href="#">условиями
 	конфидициальности</a> на сайте GitHub.
 </footer>
-<script src="main.js"></script>
+<script>
+	function addPost() {
+		const text = document.getElementById('postInput').value;
+		const postname = document.getElementById('postName').value;
+		const postpass = document.getElementById('postPassword').value;
+		const wall = document.getElementById('wall');
+		let likes = 0;
+		// const addLike = () => {++likes; alert(likes)}
+
+		if (postpass === "Helio" && text.trim() !== "") {
+
+			const newPost = document.createElement('div');
+			newPost.className = 'post';
+
+			newPost.innerHTML = `
+        <p class="postmain">${postname}</p>
+        <p>${text}</p>
+        <div>
+            <button class="vk-button-btn" onclick="${likes++}">Кнопка</button>
+        </div>
+    `;
+
+			wall.prepend(newPost);
+
+			document.getElementById('postInput').value = "";
+			document.getElementById('postName').value = "";
+			document.getElementById('postPassword').value = "";
+		}
+
+	}
+
+</script>
 
 </body>
 

@@ -1,0 +1,36 @@
+body {
+    background-color: lightgrey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.post {
+    background-color: papayawhip;
+    margin: 30px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.postmain {
+    font-size: 30px;
+    margin: 3px;
+    padding: 1px;
+}
+
+.vkontakte-text {
+    font-size: 50px;
+    background-color: #ADADAD;
+    /* Вот эта магия! */
+    padding: 10px 0;
+    padding-left: 10px;
+    color: white;
+}
+
+.postfooter {
+    display: flex;
+}
+
+button {
+    border-radius: 5px;
+    font-size: 20px;
+}

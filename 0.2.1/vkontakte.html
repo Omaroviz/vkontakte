@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 
 <head>
 	<meta charset="UTF-8">
@@ -9,35 +9,22 @@
 	<title>Вконтакте Druza</title>
 </head>
 
-<!--<a href="#" class="vk-button"></a>-->
-
 <body>
 <header style="">
 	<div class="vkontakte-main-text">
-		<span class="vkontakte-text"><span class="vkontakte-main-text-B">В</span>контакте</span>
-		<a href="#" class="vk-button">Моя страница</a>
-		<a href="#" class="vk-button">Друзья</a>
+		<a href="profile.html" class="btnprofile"><button type="submit">Моя страница</button></a>
+		<span class="vkontakte-text">
+		<span style="background-color: #45679e; color: #ffffff; padding: 0px 8px; border-radius: 10px; margin-right: 5px; font-family: Tahoma, Geneva, sans-serif;">В</span>контакте
+		</span>
+		<a href="#vniz" style="margin-left: 10px;"><button type="submit">Вниз</button></a>
 	</div>
-
 </header>
 <main>
 	<nav>
 		<h2 style="margin: 10px;"><em>....Стена Omaroivz</em></h2>
-		<a href="#vniz" class="vk-button">Вниз</a>
-		<a href="profile.html" class="vk-button">Моя страница</a>
+		<a href="#vniz" style="margin-left: 10px;"><button type="submit">Вниз</button></a>
+		<a href="profile.html"><button type="submit">Моя страница</button></a>
 	</nav>
-	<div class="post">
-		<p class="postmain">Новая запись</p>
-		<textarea id="postName" placeholder="Заголовок" class="createPostName"></textarea>
-		<textarea id="postInput" placeholder="Что у вас нового?" class="createPostText"></textarea>
-		<input type="password" id="postPassword" placeholder="Пароль" class="createPostPassword">
-
-		<button type="button" onclick="addPost()" class="createPostButton">Опубликовать</button>
-	</div>
-
-	<!-- Сюда будут падать новые посты -->
-	<div id="wall"></div>
-
 	<div class="post">
 		<p class="postmain">Дата выхода.</p>
 		Пока эта информация ни кому не нужна (проект локальный на 18.02.2026, ссылка на код есть только в GitHub), кроме разработчиков. Так как проект локальный, посты создаются только по классу post вручную. Открытие сайта будет воспроизведено только после того, как на сайте будет:
@@ -61,49 +48,16 @@
 		<p class="postmain">Альфа-версия Вконтакте Druza открыта!</p>
 		<p>Сегодня, 19 ферваля 2026 года, в 18:41 добавлен первый репозиторий Вконтакте Druza.</p>
 		<div class="postfooter">
-<!--			<button type="submit" onclick="like()">Лайк</button>-->
-<!--			<button type="submit">Дизлайк</button>-->
-<!--			<a href="mailto:omaroviz2025@gmail.com"><button type="submit">E-Mail</button></a>-->
+			<button type="submit" onclick="like()">Лайк</button>
+			<button type="submit">Дизлайк</button>
+			<a href="mailto:omaroviz2025@gmail.com"><button type="submit">E-Mail</button></a>
 		</div>
 	</div>
 </main>
 <footer id="vniz">
-	<a href="#" class="vk-button">О сайте</a>
+	<button type="submit">О сайте</button>
 	"Вконтакте Druza" ООО. Все права защищены. Распространения кода сайта разрешено с <a href="#">условиями конфидициальности</a> на сайте GitHub.
 </footer>
-<script>
-	function addPost() {
-		const text = document.getElementById('postInput').value;
-		const postname = document.getElementById('postName').value;
-		const postpass = document.getElementById('postPassword').value;
-		const wall = document.getElementById('wall');
-
-		if (postpass == "Helio" && text.trim() !== "") {
-			// Создаем оболочку поста
-			const newPost = document.createElement('div');
-			newPost.className = 'post';
-
-			// Формируем внутренности (как у тебя в CSS)
-			newPost.innerHTML = `
-        <p class="postmain">${postname}</p>
-        <p>${text}</p>
-        <div class="postfooter">
-            <button type="button" onclick="like()">Лайк</button>
-            <button type="button">Дизлайк</button>
-        </div>
-    `;
-
-			// Добавляем в начало списка (новые сверху)
-			wall.prepend(newPost);
-
-			// Очищаем поле
-			document.getElementById('postInput').value = "";
-			document.getElementById('postName').value = "";
-			document.getElementById('postPassword').value = "";
-		}
-	}
-</script>
-
 </body>
 
 </html>
